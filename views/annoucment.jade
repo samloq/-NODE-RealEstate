@@ -1,0 +1,92 @@
+extends layout
+
+!= messages()
+block content
+ h2.page-header Annoucment
+ p Please add annoucment using the form below
+  if errors
+   each error, i in errors
+    div.alert.alert-danger #{error.msg}
+ form(method='post', action='/users/annoucment', autocomplete='on')
+  .form-group
+   label Annoucment Title
+   input.form-control(name='title', type='text', placeholder='Enter name' autocomplete='on')
+  .form-group
+   label State
+   select.form-control
+      option(value='AL') Alabama
+      option(value='AK') Alaska
+      option(value='AZ') Arizona
+      option(value='AR') Arkansas
+      option(value='CA') California
+      option(value='CO') Colorado
+      option(value='CT') Connecticut
+      option(value='DE') Delaware
+      option(value='FL') Florida
+      option(value='GA') Georgia
+      option(value='HI') Hawaii
+      option(value='ID') Idaho
+      option(value='IL') Illinois
+      option(value='IN') Indiana
+      option(value='IA') Iowa
+      option(value='KS') Kansas
+      option(value='KY') Kentucky
+      option(value='LA') Louisiana
+      option(value='ME') Maine
+      option(value='MD') Maryland
+      option(value='MA') Massachusetts
+      option(value='MI') Michigan
+      option(value='MN') Minnesota
+      option(value='MS') Mississippi
+      option(value='MO') Missouri
+      option(value='MT') Montana
+      option(value='NE') Nebraska
+      option(value='NV') Nevada
+      option(value='NH') New Hampshire
+      option(value='NJ') New Jersey
+      option(value='NM') New Mexico
+      option(value='NY') New York
+      option(value='NC') North Carolina
+      option(value='ND') North Dakota
+      option(value='OH') Ohio
+      option(value='OK') Oklahoma
+      option(value='OR') Oregon
+      option(value='PA') Pennsylvania
+      option(value='RI') Rhode Island
+      option(value='SC') South Carolina
+      option(value='SD') South Dakota
+      option(value='TN') Tennessee
+      option(value='TX') Texas
+      option(value='UT') Utah
+      option(value='VT') Vermont
+      option(value='VA') Virginia
+      option(value='WA') Washington
+      option(value='WV') West Virginia
+      option(value='WI') Wisconsin
+      option(value='WY') Wyoming
+  .form-group
+   label Price
+   input.form-control(name='price', type='number', min="1", placeholder='Enter price' autocomplete='on')
+  .form-group
+   label Mortgage
+   input.form-control(name='mortgage', type='number', min="1", placeholder='Enter mortgage of property' autocomplete='on')
+  .form-group
+   label Sqft.
+   input.form-control(name='sqft', type='number', min="1", placeholder='Enter square feets of property' autocomplete='on')
+  .form-group
+   label Rooms
+   input.form-control(name='rooms', type='number', min="1", placeholder='Enter number of rooms' autocomplete='on')
+  .form-group
+   label Bathrooms
+   input.form-control(name='bathrooms', type='number', min="1", placeholder='Enter number of bathrooms' autocomplete='on')
+  .form-group
+   label.radio-inline
+   input(type="radio", name="property", value="house", checked=property=="house")
+   | House
+   label.radio-inline
+   input(type="radio", name="property", value="flat", checked=property=="flat")
+   | Flat
+  .form-group
+   label.text--description(for='description') Description: 
+   textarea#description(name='property_description', rows='4', cols='50') Please leave a property description!
+  input.btn.btn-primary(type='submit', name='submit', value='Add')

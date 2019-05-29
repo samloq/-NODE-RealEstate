@@ -1,0 +1,90 @@
+body {
+  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+}
+
+[class*="col-"] {
+  margin-bottom: 20px;
+}
+
+a {
+  color: #00B7FF;
+}
+
+ul.success li {
+  padding: 15px;
+  margin-bottom: 20px;
+  border: 1px solid transparent;
+  border-radius: 4px;
+  color: #3c763d;
+  background-color: #dff0d8;
+  border-color: #d6e9c6;
+  list-style: none;
+}
+
+ul.error li {
+  padding: 15px;
+  margin-bottom: 20px;
+  border: 1px solid transparent;
+  border-radius: 4px;
+  color: #a94442;
+  background-color: #f2dede;
+  border-color: #ebccd1;
+  list-style: none;
+}
+
+/*Home Page Styles*/
+
+
+.annoucment {
+  width: 100%;
+  box-shadow: 0 0 2px 0px transparent;
+  transition: 300ms;
+  border: 1px solid lightgray;
+}
+
+.annoucment:hover {
+  box-shadow: 0 0 2px 0px black;
+  cursor: pointer;
+}
+
+
+.annoucment > .annoucment--body > .annoucment--image > img{
+  width: 100%;
+}
+
+.annoucment > .annoucment--body > .annoucment--description{
+  padding: 5px;
+}
+
+.annoucment > .annoucment--body > .annoucment--description:after {
+  content:'';
+  display:block;
+  clear:both;
+}
+
+.annoucment > .annoucment--body > .annoucment--description > p {
+  padding: 5px;
+  margin: 0;
+}
+
+.annoucment > .annoucment--body > .annoucment--description > a {
+  text-decoration: none;
+  float: right;
+  font-size: 15px;
+  padding: 5px;
+  background: #2ECC71;
+  color: white;
+  transition: 300ms;
+}
+
+.annoucment > .annoucment--body > .annoucment--description > a:hover {
+  background: white;
+  color: black;
+}
+
+/* Add annoucment styles */
+
+.text--description {
+  display: block;
+}
+

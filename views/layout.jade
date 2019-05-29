@@ -1,0 +1,49 @@
+doctype html
+html
+  head
+    title= title
+    title NodeAuth
+        meta( charset='utf-8' )
+        meta( http-equiv='X-UA-Compatible', content='IE=edge' )
+        meta( name='viewport', content='width=device-width, initial-scale=1.0' )
+        meta( name='description', content='NodeAuth' )
+        meta( http-equiv="Content-Security-Policy", content="img-src 'self' data:; default-src 'self' localhost:3000" )
+    link(rel='stylesheet', href='/stylesheets/style.css')
+    link(rel='stylesheet', href='/stylesheets/bootstrap.css')
+  body
+nav.navbar.navbar-default
+  .container-fluid
+    .navbar-header
+      button.navbar-toggle.collapsed(type='button', data-toggle='collapse', data-target='#navbar', aria-expanded='false', aria-controls='navbar')
+        span.sr-only Toggle navigation
+        span.icon-bar
+        span.icon-bar
+        span.icon-bar
+      a.navbar-brand(href='/') RealEstate
+    #navbar.navbar-collapse.collapse
+      ul.nav.navbar-nav
+        li(class=title=='Home'?'active':undefined)
+          a(href='/') Home
+        if user
+          li(class=title=='Members'?'active':undefined)
+            a(href='/users/members') Members
+          li(class=title=="Annoucment"?'active':undefined)
+            a(href='/users/annoucment') Annoucment
+      ul.nav.navbar-nav.navbar-right
+        if user
+          li
+            a(href='/users/logout') Logout
+        if !user
+          li(class=title=='Login'?'active':undefined)
+            a(href='/users/login') Login
+        if !user
+          li(class=title=='Register'?'active':undefined)
+            a(href='/users/register') Register
+ .container
+  != messages()
+  block content
+
+
+
+script( src='/javascripts/jquery.js' )
+script( src='/javascripts/bootstrap.js' )
