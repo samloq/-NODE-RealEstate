@@ -10,6 +10,8 @@ html
         meta( http-equiv="Content-Security-Policy", content="img-src 'self' data:; default-src 'self' localhost:3000" )
     link(rel='stylesheet', href='/stylesheets/style.css')
     link(rel='stylesheet', href='/stylesheets/bootstrap.css')
+    link(rel='stylesheet', href='https://fonts.googleapis.com/icon?family=Material+Icons')
+    link(href='https://fonts.googleapis.com/css?family=Lato&display=swap', rel='stylesheet')
   body
 nav.navbar.navbar-default
   .container-fluid
@@ -25,8 +27,8 @@ nav.navbar.navbar-default
         li(class=title=='Home'?'active':undefined)
           a(href='/') Home
         if user
-          li(class=title=='Members'?'active':undefined)
-            a(href='/users/members') Members
+          li(class=title=='Dashboard'?'active':undefined)
+            a(href='/users/dashboard') Dashboard
           li(class=title=="Annoucment"?'active':undefined)
             a(href='/users/annoucment') Annoucment
       ul.nav.navbar-nav.navbar-right
@@ -39,11 +41,12 @@ nav.navbar.navbar-default
         if !user
           li(class=title=='Register'?'active':undefined)
             a(href='/users/register') Register
- .container
+ .container-fluid
   != messages()
-  block content
+  
+block content
 
 
-
+script( src='/javascripts/jquery.ui.min.js')
 script( src='/javascripts/jquery.js' )
 script( src='/javascripts/bootstrap.js' )

@@ -15,6 +15,7 @@ const expressValidator = require('express-validator');
 
 const indexRouter = require('./routes/index');
 const usersRouter = require('./routes/users');
+const protectedRouter = require('./routes/protected');
 
 
 
@@ -76,6 +77,9 @@ app.use('*', function(req,res,next) {
 
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
+// app.use('/protected',protectedRouter);
+
+
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

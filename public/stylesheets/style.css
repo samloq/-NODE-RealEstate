@@ -1,18 +1,54 @@
 body {
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+  font-family: 'Lato', sans-serif;
 }
 
+/*Navbar styles */
+
+nav.navbar {
+  margin-bottom: 0 !important;
+  -webkit-border-radius: 0;
+  -moz-border-radius: 0;
+  border-radius: 0;
+  background-color: white;
+}
+
+
+/*Home Page Styles */
 [class*="col-"] {
   margin-bottom: 20px;
 }
+
+.jumbotron {
+  background-image: url("/images/jumbotron.jpg");
+  /* background-size: cover;
+  background-position: 50% 50%; */
+  height: 600px;
+  background-attachment: fixed;
+  background-position: 50% 150%;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
 
 a {
   color: #00B7FF;
 }
 
+ul {
+  padding-left: 0 !important;
+  margin-bottom: 0;
+}
+
+.err {
+  border: 1px solid transparent !important;
+  border-radius: 4px !important;
+  color: #a94442 !important;
+  background-color: #f2dede !important;
+  border-color: #ebccd1 !important;
+}
+
 ul.success li {
   padding: 15px;
-  margin-bottom: 20px;
   border: 1px solid transparent;
   border-radius: 4px;
   color: #3c763d;
@@ -23,7 +59,6 @@ ul.success li {
 
 ul.error li {
   padding: 15px;
-  margin-bottom: 20px;
   border: 1px solid transparent;
   border-radius: 4px;
   color: #a94442;
@@ -31,8 +66,6 @@ ul.error li {
   border-color: #ebccd1;
   list-style: none;
 }
-
-/*Home Page Styles*/
 
 
 .annoucment {
@@ -82,9 +115,43 @@ ul.error li {
   color: black;
 }
 
-/* Add annoucment styles */
 
+.property--search--style {
+  height: 43px !important;
+}
+
+.property--search--group {
+  max-width: 50% !important;
+  margin: 0 auto !important;
+}
+
+/*Home Page Styles */
+
+
+
+
+
+
+
+
+
+
+
+/*Annoucment Page Styles*/
 .text--description {
   display: block;
 }
 
+.property--image--input {
+  padding: 0 !important;
+}
+
+
+/*Annoucment Page Styles*/
+
+
+
+
+
+
+/*Media queries*/

@@ -6,15 +6,17 @@ const upload = multer();
 const passport = require('passport');
 const LocalStrategy = require('passport-local').Strategy;
 const auth = require('../middleware/auth');
+const propertyValidation = require('../middleware/propertyValidation');
 
 
 let User = require('../models/user');
+let Annoucment = require('../models/annoucment');
 
 /* GET users listing. */
-router.get('/', function(req, res, next) {
-	//Todo rendering records from db
-	res.render('home', {title: 'Home'})
-});
+// router.get('/', function(req, res, next) {
+// 	//Todo rendering records from db
+// 	res.render('home', {title: 'Home'})
+// });
 
 
 router.get('/register', function(req, res, next) {
@@ -68,12 +70,9 @@ router.post('/register', upload.single('profileimage') ,function(req, res, next)
 	let password = req.body.password;
 	let password2 = req.body.password2;
 	let file = req.file;
-	let base64 = ( function(file) {
-		if(!file) {
-			return null;
-		}
-		return file.buffer.toString('base64');
-	})();
+	let base64 = file.buffer.toString('base64');
+
+	console.log(base64);
 
 	//Form validator
 	req.checkBody('name', 'Name field is required').notEmpty();
@@ -130,6 +129,12 @@ router.post('/register', upload.single('profileimage') ,function(req, res, next)
 	}
 });
 
+
+
+
+
+
+
 router.get('/logout', function(req,res) {
 	req.logout();
 	req.flash('success', 'You are now logged out');
@@ -137,21 +142,57 @@ router.get('/logout', function(req,res) {
 })
 
 
-router.get('/members', auth, function(req, res, next) {
-	res.render('members', {title: 'Members'})
+router.get('/dashboard', auth, function(req, res, next) {
+	res.render('dashboard', {title: 'Dashboard'})
 });
+
+
+
+
+
+
+
 
 router.get('/annoucment', auth, function(req, res, next) {
 	res.render('annoucment', {title: 'Annoucment'});
 });
 
-router.post('/annoucment', function(req,res,next) {
-	if(!req.body) res.status(400);
-	
-	//TODO saving records to db
-	req.flash('success', 'You added a new annoucment');
-	res.location('/');
-	res.redirect('/');
+router.post('/annoucment', [upload.array('propertyImages'),auth,propertyValidation],function(req,res,next) {
+	// if(!req.body) res.status(400);
+	console.log(req.body);
+	console.log(req.files);
+	// req.checkBody('email', 'Email is not valid').isEmail();
+	// req.checkBody('username', 'Username field is required').notEmpty();
+	// req.checkBody('password', 'The password must be 5+ chars long and contain a number')
+	// 	.not().isIn(['123', 'password', 'god']).withMessage('Do not use a common word as the password')
+	// 	.isLength({ min: 5 }).withMessage('Incorrect password length')
+	// 	.matches(/\d/);
+	// req.checkBody('password2', 'Passwords do not match').equals(req.body.password);
+	const now = new Date();
+		let property = {
+			title: req.body.title,
+			state:req.body.state,
+			price:req.body.price,
+			mortgage:req.body.mortgage,
+			sqft:req.body.sqft,
+			rooms:req.body.rooms,
+			bathrooms:req.body.bathrooms,
+			property:req.body.property,
+			description:req.body.description,
+			created:now,
+		}
+		req.flash('success', 'You added a new annoucment');
+		res.location('/');
+		res.redirect('/');
+});
+
+
+
+
+
+
+router.get('/property/:id', function(req, res, next) {
+	res.render('annoucment', {title: 'Annoucment'});
 });
 
 

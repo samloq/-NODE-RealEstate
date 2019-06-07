@@ -3,28 +3,61 @@ extends layout
 block content
   .jumbotron
     h1 RealEstate
-    p
-      | ...
+    p ...
+  .container
+    form(method='post', action='/annoucment', autocomplete='on')
+      .row
+        .col-lg-12
+          .input-group.property--search--group
+            input#propertySearch.form-control.property--search--style(type='text', placeholder='Search')
+            .input-group-btn
+              button.btn.btn-primary(type='submit')
+                i.material-icons search
   .container-fluid
+    h1 Latest Properties
     .row
-      .col-md-4.col-sm-6.col-xs-12
+      .col-md-3.col-sm-6.col-xs-12.col-lg-3
         .annoucment
           .annoucment--body
             .annoucment--image
               img(src='/images/property.jpg')
             .annoucment--description
               h4 $1200
-      .col-md-4.col-sm-6.col-xs-12
+      .col-md-3.col-sm-6.col-xs-12.col-lg-3
         .annoucment
           .annoucment--body
             .annoucment--image
               img(src='/images/property.jpg')
             .annoucment--description
               h4 $1200
-      .col-md-4.col-sm-6.col-xs-12
+      .col-md-3.col-sm-6.col-xs-12.col-lg-3
         .annoucment
           .annoucment--body
             .annoucment--image
               img(src='/images/property.jpg')
             .annoucment--description
               h4 $1200
+      .col-md-3.col-sm-6.col-xs-12.col-lg-3
+        .annoucment
+          .annoucment--body
+            .annoucment--image
+              img(src='/images/property.jpg')
+            .annoucment--description
+              h4 $1200
+      .col-md-3.col-sm-6.col-xs-12.col-lg-3
+        .annoucment
+          .annoucment--body
+            .annoucment--image
+              img(src='/images/property.jpg')
+            .annoucment--description
+              h4 $1200
+      .col-md-3.col-sm-6.col-xs-12.col-lg-3
+        .annoucment
+          .annoucment--body
+            .annoucment--image
+              img(src='/images/property.jpg')
+            .annoucment--description
+              h4 $1200
+
+  script( src='/javascripts/jquery.js' )
+  script( src='/javascripts/home.js' )
