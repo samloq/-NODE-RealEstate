@@ -146,6 +146,15 @@ ul.error li {
   padding: 0 !important;
 }
 
+.img--preview--wrapper {
+  margin-top: 35px;
+}
+
+.img--preview {
+  max-width: 150px;
+}
+
+
 
 /*Annoucment Page Styles*/
 

@@ -18,11 +18,37 @@ function formatNumber(e, sel) {
         }
 }
 
+function numberValidator(e, sel) {
+    if(e.target.value < 0) {
+        e.target.value = '';
+    }
+    let char = String.fromCharCode(e.target.value);
+    for(let i=0; i< e.target.value.length; i++) {
+        if(!(e.target.value.charCodeAt(i) > 48 && e.target.value.charCodeAt(i) <= 57)) {
+            e.target.value = '';
+        }
+    }
+}
+
+function formatZipCode(e) {
+    if(e.target.value < 0) {
+        e.target.value = '';
+    }
+    let char = String.fromCharCode(e.target.value);
+    for(let i=0; i< e.target.value.length; i++) {
+        if(!(e.target.value.charCodeAt(i) > 48 && e.target.value.charCodeAt(i) <= 57)) {
+            e.target.value = '';
+        }
+    }
+}
+
+
+
 
 $( document ).ready(function() {
     let imageInputSel = document.getElementById('propertyImageInput');
     let imageWrapperSel = document.getElementById('imageWrapper');
-    
+    let imgPreviewSel = document.getElementById('imgPreview');
     
     //Scroll down when accordion is activated
     let featuresAccordion = document.getElementById('accordion');
@@ -39,6 +65,13 @@ $( document ).ready(function() {
             formatNumber(e, priceSel);
         }, 1000);
     });
+
+    let tvSel = document.getElementById('tv');
+    tvSel.addEventListener('keyup', function(e) {
+        setTimeout(function() {
+            numberValidator(e, tvSel);
+        }, 1000);
+    })
 
     /*Mortgage*/
     let mortgageSel = document.getElementById('mortgage');
@@ -65,7 +98,20 @@ $( document ).ready(function() {
     let roomsSel = document.querySelectorAll('[name=rooms]')[0];
     roomsSel.addEventListener('keypress', isInputNumber);
 
+    /*Zip-Code*/
+    let zipCodeSel = document.getElementById('zipCode');
+    // zipCodeSel.addEventListener('keyup',function(e) {
+    //     setTimeout(function(){
+    //         formatZipCode(e);
+    //     }, 1000);
+    // });
+
     //===============VALIDATION===============//
+
+
+
+
+
 
 
 
@@ -73,14 +119,30 @@ $( document ).ready(function() {
         window.location.reload();
     })
 
+
     $.each(imageInputSel.files, function(i, file) {
-        var img = document.createElement("img");
+        let index = i;
+        let img = document.createElement("img");
+        let wrapper = document.createElement('div');
+        let fileSize = file.size > 1048576 ? true : false;
+
+        wrapper.classList += 'col-lg-2 col-sm-4 col-xs-6 text-center';
         img.id = "image"+(i+1);
-        var reader = new FileReader();
+        img.classList = 'img--preview';
+        
+        
+        let reader = new FileReader();
         reader.onloadend = function () {
             img.src = reader.result;
+            if( fileSize ){
+                wrapper.innerText = 'File is too big, max 1MB';
+                $(imgPreviewSel).after(wrapper);
+            } else {
+                wrapper.appendChild(img);
+            }
         }
         reader.readAsDataURL(file);
-        $("#imageWrapper").after(img);
+        $(imgPreviewSel).after(wrapper);
     });
+
 });

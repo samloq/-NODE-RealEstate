@@ -15,7 +15,7 @@ const expressValidator = require('express-validator');
 
 const indexRouter = require('./routes/index');
 const usersRouter = require('./routes/users');
-const protectedRouter = require('./routes/protected');
+// const protectedRouter = require('./routes/protected');
 
 
 
